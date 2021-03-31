@@ -17,11 +17,10 @@ import pandas_datareader.data as web
 #themes: ggplot, classic
 style.use('ggplot')
 
-# growth stock evaluate the last 5 years - kvadratisk underliggande trend
-# entry / exit evaluated based on the last year
-
+# time inteval
 start = dt.datetime(2020,1,1)
 end = dt.datetime(2022,1,1)
+
 # S&P 500
 #df = web.DataReader('^GSPC','yahoo',start,end)
 #df = web.DataReader('VOOG','yahoo',start,end)
@@ -32,7 +31,7 @@ end = dt.datetime(2022,1,1)
 #df = web.DataReader('KLAC','yahoo',start,end)
 #df = web.DataReader('AAPL','yahoo',start,end)
 
-#  OMXS  och alla företag
+#  OMXS  
 #df = web.DataReader('^OMX','yahoo',start,end)
 #df = web.DataReader('ABB.ST','yahoo',start,end)
 #df = web.DataReader('ALFA.ST','yahoo',start,end)
@@ -76,7 +75,7 @@ df['21ma'] = df['Adj Close'].rolling(window=21).mean()
 df['14ema'] = df['Adj Close'].rolling(window=7).mean()
 df['14std'] = df['Adj Close'].rolling(window=21).std()
 
-# pseudo-volume Bollinger bands
+# pseudo-volume upper Bollinger band
 df['Volume1'] = df['Volume'].rolling(window=21).mean() + df['Volume'].rolling(window=7).std() 
 
 
